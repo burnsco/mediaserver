@@ -31,7 +31,7 @@ services:
       - ${MEDIA_DIR}:/media
 
   filebot:
-    image: ghostserverd/filebot:4.9.x
+    image: ghostserverd/filebot:4.8.x
     container_name: filebot
     restart: always
     ports:
