@@ -20,7 +20,6 @@ services:
       - TRANS_MAX_RETENTION=${TRANS_MAX_RETENTION}
       - TRANS_MAX_RATIO=${TRANS_MAX_RATIO}
       - TRANS_CONNECTION_PORT=${TRANS_CONNECTION_PORT}
-      - FILEBOT_PORT=${FILEBOT_PORT}
       - SONARR_API_KEY=${SONARR_API_KEY}
       - SONARR_PORT=${SONARR_PORT}
       - RADARR_API_KEY=${RADARR_API_KEY}
@@ -29,33 +28,6 @@ services:
       - ${CONFIG_DIR}/transmission:/config
       - ${DOWNLOAD_DIR}:/downloads
       - ${MEDIA_DIR}:/media
-
-  filebot:
-    image: ghostserverd/filebot:4.8.x
-    container_name: filebot
-    restart: always
-    ports:
-      - "${FILEBOT_PORT}:${FILEBOT_PORT}"
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TIMEZONE}
-      - FILEBOT_PORT=${FILEBOT_PORT}
-      - FILEBOT_FORMAT=${FILEBOT_FORMAT}
-      - FILEBOT_FILTER=${FILEBOT_FILTER}
-      - FILEBOT_ACTION=${FILEBOT_ACTION}
-      - FILEBOT_CONFLICT=${FILEBOT_CONFLICT}
-      - FILEBOT_SERIES_DB=${FILEBOT_SERIES_DB}
-      - FILEBOT_ANIME_DB=${FILEBOT_ANIME_DB}
-      - FILEBOT_MOVIE_DB=${FILEBOT_MOVIE_DB}
-      - FILEBOT_MUSIC_DB=${FILEBOT_MUSIC_DB}
-      - OPEN_SUB_USER=${OPEN_SUB_USER}
-      - OPEN_SUB_PASS=${OPEN_SUB_PASS}
-    volumes:
-      - ${CONFIG_DIR}/filebot:/config
-      - ${DOWNLOAD_DIR}:/downloads
-      - ${MEDIA_DIR}:/media
-      - ${BASE_DIR}:/share
   
   sonarr:
     image: ghostserverd/sonarr
