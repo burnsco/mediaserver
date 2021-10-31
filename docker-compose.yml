@@ -142,16 +142,6 @@ services:
       - ${CONFIG_DIR}/plex:/config
       - ${MEDIA_DIR}:/data
 
-  portainer:
-    image: portainer/portainer-ce
-    container_name: portainer
-    restart: always
-    ports:
-      - "${PORTAINER_PORT}:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ${CONFIG_DIR}/portainer:/data
-
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
